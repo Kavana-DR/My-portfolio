@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavana D R - Portfolio</title>
+    <style>
+        :root {
+            --color-primary: #6366f1;
+            --color-primary-hover: #4f46e5;
+            --color-primary-light: #818cf8;
+            --color-accent: #f59e0b;
+            --color-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --color-surface: #ffffff;
+            --color-text: #1e293b;
+            --color-text-secondary: #64748b;
+            --color-border: rgba(100, 116, 139, 0.2);
+            --color-card-bg: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-color-scheme="dark"] {
+            --color-primary: #818cf8;
+            --color-primary-hover: #6366f1;
+            --color-primary-light: #a5b4fc;
+            --color-accent: #fbbf24;
+            --color-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            --color-surface: #1e293b;
+            --color-secondary: rgba(129, 140, 248, 0.15);
+            --color-text: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-border: rgba(148, 163, 184, 0.3);
+            --color-card-bg: #334155;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        [data-color-scheme="light"] {
+            --color-primary: #6366f1;
+            --color-primary-hover: #4f46e5;
+            --color-primary-light: #818cf8;
+            --color-accent: #f59e0b;
+            --color-bg: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            --color-surface: #fffbeb;
+            --color-secondary: rgba(245, 158, 11, 0.15);
+            --color-text: #292524;
+            --color-text-secondary: #78716c;
+            --color-border: rgba(120, 113, 108, 0.2);
+            --color-card-bg: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            gap: 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            color: var(--color-text);
+            font-size: 20px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 120px;
+            text-align: center;
+            background: var(--color-bg);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #6366f1;
+            box-shadow: var(--shadow-lg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            color: var(--color-text);
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero .bio {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-info a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-primary-hover);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--color-primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: var(--color-card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-primary);
+            transform: scaleY(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .education-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary-light);
+        }
+
+        .education-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .education-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .education-year {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .education-institution {
+            color: var(--color-text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .education-score {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: var(--color-card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-category h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .skill-category li:hover {
+            transform: translateX(5px);
+            color: var(--color-primary);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--color-card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+            border-radius: 16px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .project-card:hover::after {
+            opacity: 0;
+        }
+
+        .project-title {
+            font-size: 22px;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .project-tech {
+            color: var(--color-primary);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-card li {
+            padding: 6px 0;
+            color: var(--color-text-secondary);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-item {
+            background: var(--color-card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s;
+        }
+
+        .cert-item:hover {
+            transform: translateX(5px);
+        }
+
+        .cert-title {
+            color: var(--color-text);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .cert-provider {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Achievements */
+        .achievements-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: var(--color-card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .achievement-title {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary-hover);
+        }
+
+        .copyright {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card,
+            .education-item {
+                padding: 20px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+            }
+
+            .hero .bio {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .nav-links {
+                font-size: 13px;
+            }
+        }
+
+        /* Smooth scroll offset for sticky header */
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kavana D R</div>
+                <div class="nav-content">
+                    <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#about-me">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="about" class="hero">
+        <div class="container">
+            <div class="profile-photo">
+                <img src="https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/126066289/f5c309ab-4d39-4176-8eeb-6aed46458772/image.jpg?AWSAccessKeyId=ASIA2F3EMEYEWMIYJKHC&Signature=qpccylbdjsxHuccHoYfmekCkp0w%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEPb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIEYxvxVgVZH0ztqeuYv5xYslAsKSwGMRqohSVPlhvnS9AiBuyYU1n54LYtXicUkshx%2Bl52nLs2B7lcvpcScp46%2BYMCr8BAi%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAEaDDY5OTc1MzMwOTcwNSIMWam5%2F0KGNyVsV6GzKtAENgSml3ha5FRhN4bsJ31C7TOXzJXq4BLfG1mWsbG845va%2BxsyZeu627AEos5VxdAYnVJX0Wzk6kkDkHE9JjfIdZJUjXHkf7PPXiqqGLcK%2Fufi2IHOc5hmipD%2F8rCVGS5xpMPD9IOqIWac3Ue0Aa1xlT31NM%2F1V%2BLnFQBBlLnW%2BqnMs06DydUKCkg3YDnn1hbfzV%2F9Q6dYSX0Ti6WwMqLEQNXw3izBWWYYTcxEyrYHEEW2A36mKPN0Q%2Ff0lTFiSY8oKs9YgPuB3Zh8%2BfMUtW2T6rASGKtOvSLpW6bKvHZyl89pZLE7lBN92QuwHADtAUjCFu1V1SD7nw5r6lvsjWepDraeReEV1rNMO%2FjNHu9b5a0zpHAdsr%2B4qSBNwZrKawgcff%2F6PNvyteBgxF%2BwFbJ8xkY3jWO1UFN7l5Fe3yHF3qQXa3%2Fi2LZK2%2BgbsCKwxfJkbcA%2BWPbNl4SaT0r1mns0cT4P9gzwZxJUG%2BdzfwsBdd68LaVff%2BgCVV1X4mfjDXcr2RCtTTnmE36GHDkBVmn4G2Jpoj2D0xuX33nvC5h9xXb7dtFCL1pwWyNjsAIHNC3GLazZf5HjqBG%2BvzT9B36QVZKF9PWh00voolKC8mmXDvrURtZyVsMfDx1HBOzRiixxO2JzylKqkSTwGoYowIfiBOeaD2EnllzH0u%2BmsTKAnDbpPb%2Fmax4G8UvDaabGlMY3W8UIcWl2BjvEKcE5QwaPksX4rKmBEXFe%2B2%2F02qkPEdxcnaDFfu97XAVVHqqmEoMVGZoPqsGu1qxPrYVmQqFuFTDe7rfIBjqZARZEv7ADgdop6KaZw5YiSFTA%2FYyvzGI78vJjCgseHkoqykYQNt19G0Z57QlPLhS3Ibd4JC9fZ4CApNIVe2qI3EVc1gvMdynjf1QlFJ9poENLiN3TeczWYal2FJaqHeJm35Hb7t2CrgxVOV9Sz85j2Fx3sqEoUMGuB6j%2BINwSbv3qeJNp9jjIxN6NE9rx623jbafJb201ZhjrWg%3D%3D&Expires=1765116554" alt="Kavana D R">
+            </div>
+            <h1>Kavana D R</h1>
+            <p class="subtitle">Computer Science Engineering Student</p>
+            <p class="bio">
+                B.Tech in Computer Science and Engineering at Acharya Institute of Technology, Bangalore. 
+                Passionate about web development, machine learning, and building innovative solutions.
+            </p>
+            <div class="contact-info">
+                <a href="tel:+918050463458">📞 +91-8050463458</a>
+                <a href="mailto:kavanadr45@gmail.com">✉️ kavanadr45@gmail.com</a>
+                <a href="https://github.com/kavanadr45" target="_blank" rel="noopener noreferrer">🔗 GitHub</a>
+                <a href="https://linkedin.com/in/kavanadr" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about-me" style="background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 200px 0 80px;">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background: var(--color-card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--color-border); box-shadow: var(--shadow-md);">
+                    <p style="font-size: 18px; line-height: 1.8; color: var(--color-text); margin-bottom: 20px;">
+                        Beyond coding and technology, I'm passionate about exploring the rich world of Kannada literature and entertainment. 
+                        I love immersing myself in Kannada novels, series, and movies, which give me a deeper connection to my roots and culture.
+                    </p>
+                    <p style="font-size: 18px; line-height: 1.8; color: var(--color-text); margin-bottom: 25px;">
+                        When I'm not behind a screen, you'll find me creating beautiful mehandi designs or dancing to my favorite tunes. 
+                        These creative outlets help me maintain balance and bring fresh perspectives to my technical work.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <span style="background: var(--color-secondary); padding: 10px 20px; border-radius: 20px; color: var(--color-text); font-weight: 500;">📚 Kannada Novels</span>
+                        <span style="background: var(--color-secondary); padding: 10px 20px; border-radius: 20px; color: var(--color-text); font-weight: 500;">🎬 Movies & Series</span>
+                        <span style="background: var(--color-secondary); padding: 10px 20px; border-radius: 20px; color: var(--color-text); font-weight: 500;">🎨 Mehandi Art</span>
+                        <span style="background: var(--color-secondary); padding: 10px 20px; border-radius: 20px; color: var(--color-text); font-weight: 500;">💃 Dance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">B.E. in Computer Science and Engineering</div>
+                        <div class="education-year">2022–2026</div>
+                    </div>
+                    <div class="education-institution">Acharya Institute of Technology, Bangalore</div>
+                    <div class="education-institution">Affiliated to VTU | Ongoing</div>
+                    <div class="education-score">Current CGPA: 8.9</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">Pre-University (12th Grade)</div>
+                        <div class="education-year">2020–2022</div>
+                    </div>
+                    <div class="education-institution">Government PU College, Sirivanthe, Shivamogga</div>
+                    <div class="education-institution">Dept. of Pre-University Education, Karnataka</div>
+                    <div class="education-score">93.16%</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">SSLC (10th Grade)</div>
+                        <div class="education-year">2020</div>
+                    </div>
+                    <div class="education-institution">Shree Ramakrishna Vidyalaya, Sagara, Shivamogga</div>
+                    <div class="education-institution">KSEEB</div>
+                    <div class="education-score">95.68%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Programming Languages</h3>
+                    <ul>
+                        <li>☕ Java (Intermediate)</li>
+                        <li>🐍 Python (Basic)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🌐 Web Development</h3>
+                    <ul>
+                        <li>🟧 HTML, CSS, JavaScript (Basic)</li>
+                        <li>⚛️ React (Basic)</li>
+                        <li>🐍 Django (Basic)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🗄️ Databases</h3>
+                    <ul>
+                        <li>🐬 MySQL (Intermediate)</li>
+                        <li>📊 SQL Queries (Joins, Aggregations, Window Functions)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Core Computer Science</h3>
+                    <ul>
+                        <li>🔗 Data Structures &amp; Algorithms</li>
+                        <li>🎯 Object-Oriented Programming</li>
+                        <li>⚙️ Operating Systems (Scheduling, Memory Management)</li>
+                        <li>🌍 Networking (TCP/IP, OSI Model)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛠️ Tools &amp; Technologies</h3>
+                    <ul>
+                        <li>🔀 Git/GitHub</li>
+                        <li>💼 VS Code</li>
+                        <li>📮 Postman</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">🧠 Autism Spectrum Disorder Detection using ML</h3>
+                    <div class="project-tech">Machine Learning | Python | Data Science</div>
+                    <ul>
+                        <li>Developed an ML model for early ASD prediction using Decision Tree, Random Forest, XGBoost</li>
+                        <li>Applied feature selection, outlier handling, and hyperparameter tuning</li>
+                        <li>Achieved highest accuracy with a Stacking Classifier</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">📅 Conference Expense Planner</h3>
+                    <div class="project-tech">React | GitHub</div>
+                    <ul>
+                        <li>Developed a dynamic event management UI using React components</li>
+                        <li>Used GitHub for version control and team collaboration</li>
+                        <li>Designed a responsive layout for better usability across devices</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">✅ Task Scheduler</h3>
+                    <div class="project-tech">Django | MySQL</div>
+                    <ul>
+                        <li>Developed a task scheduling web app with Django framework</li>
+                        <li>Designed and optimized database schema in MySQL</li>
+                        <li>Implemented CRUD operations and authentication features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-item">
+                    <div class="cert-title">Introduction to Object-Oriented Programming with Java</div>
+                    <div class="cert-provider">LearnQuest (Coursera)</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Introduction to Web Development with HTML, CSS, JavaScript</div>
+                    <div class="cert-provider">IBM (Coursera)</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Getting Started with Git and GitHub</div>
+                    <div class="cert-provider">IBM (Coursera)</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Agile with Atlassian Jira</div>
+                    <div class="cert-provider">Coursera</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <div class="achievement-title">🏆 Winner – Acharya INNOVATEX'24 (Ideathon)</div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-title">🎯 Selected for zonal round of Eureka'24 - IIT Bombay (Business model competition)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="color: var(--color-text-secondary); margin-bottom: 30px;">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:kavanadr45@gmail.com" class="btn btn-primary">Send Email</a>
+                    <a href="https://linkedin.com/in/kavanadr" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/kavanadr45" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/kavanadr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="mailto:kavanadr45@gmail.com">Email</a>
+                    <a href="tel:+918050463458">Phone</a>
+                </div>
+                <p class="copyright">&copy; 2025 Kavana D R. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        // Initialize theme - default to light mode
+        let currentTheme = 'light';
+        html.setAttribute('data-color-scheme', 'light');
+        themeIcon.textContent = '🌙';
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-color-scheme', currentTheme);
+            themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+            console.log('Theme changed to:', currentTheme); // Debug log
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and items
+        document.querySelectorAll('.education-item, .project-card, .cert-item, .achievement-item, .skill-category').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+
+### CANVAS_END_STR
